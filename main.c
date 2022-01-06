@@ -43,23 +43,18 @@ int main(){
                         scanf("%d",&src);
                         scanf("%d",&dest);
                         int shor=shortsPath_cmd(src,dest);
-                        printf("Dijsktra shortest path: %d",shor);
+                        printf("Dijsktra shortest path: %d\n",shor);
                         //isprint=1;
                         scanf("%c",&function);
                         scanf("%c",&function);
-                        if(function=='A'||function=='B'||function=='S'||function=='T'||function=='D'){
-                            printf("\n");
-                        }
+                        
                     }else if (function=='T')
                         {
                            // isA=0;
                             int tsp=TSP_cmd();
-                            printf("TSP shortest path: %d",tsp);
+                            printf("TSP shortest path: %d\n",tsp);
                             scanf("%c",&function);
                             scanf("%c",&function);
-                            if(function=='A'||function=='B'||function=='S'||function=='T'||function=='D'){
-                            printf("\n");
-                            }
                             //isprint=1;
                         }
                         //printf("function is: %c\n",function); 
