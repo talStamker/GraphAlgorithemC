@@ -40,8 +40,9 @@ int main(){
             }else if(function=='D'){
                     delete_node_cmd();
                     //printGraph_cmd();
+                    //scanf("%c",&function);
                     scanf("%c",&function);
-                    //printf("function is: %c\n",function);
+                    //printf("function d is: %c\n",function);
                     if(function=='\n'){
                     deleteGraph_cmd();
                         break;
@@ -78,7 +79,7 @@ int main(){
                             printf("TSP shortest path: %d \n",tsp);
 
                             scanf("%c",&function);
-                            //printf("function is: %c\n",function);
+                            //printf("function T is: %c\n",function);
                             if(function=='\n'){
                                 deleteGraph_cmd();
                                 // printf("\n");

@@ -234,7 +234,7 @@ char insert_node_cmd()
             {
                 pedge temp=E;
                 //printf("{%d,%d}",currentN->next->key,E->dest);
-          //      printf("we do free in insert_node_cmd for edge {%d,%d}\n",currentN->next->key,temp->dest);
+               // printf("we do free in insert_node_cmd for edge {%d,%d}\n",currentN->next->key,temp->dest);
                 E=E->next;
                 free(temp);
             }  
@@ -269,7 +269,7 @@ char insert_node_cmd()
             currentN->next->edges->w=(int)(w)-48;
             currentN->next->edges->next=NULL;
             //printf("5\n");
-            // printf("we do malloc in insert_node_cmd for edge {%d,%d}\n",currentN->next->key,currentN->next->edges->dest);
+            //printf("we do malloc in insert_node_cmd for edge {%d,%d}\n",currentN->next->key,currentN->next->edges->dest);
             pnode v1=head;
             while (v1!=NULL)
             {
@@ -444,27 +444,47 @@ int containsE(int data,pedge E){
 }
 void delete_node_cmd(){
     int data;
+    //char temp;
+    //scanf("%c",&temp);
     scanf("%d",&data);
+    //scanf("%c",&temp);
     //printf("data is: %d\n",data);
     if (containsN(data)==0)
     {
         return;
     }
-    pnode currentNode=head;
+    pnode currentNode=head;   
     if(currentNode->key==data){
-        pnode temp=head;
+        pedge E=currentNode->edges;
+        while (E!=NULL)
+        {
+            pedge temp=E;
+            //printf("we free in delete_node_cmd in head the  edge:{%d,%d}\n",currentNode->key,temp->dest);
+            E=E->next;
+            free(temp);
+        }
+        pnode tem=head;
         head=head->next;
-        //printf("we free in delete_node_cmd the vertex: %d\n",temp->key);
-        free(temp);
+        //printf("we free in delete_node_cmd in head the vertex: %d\n",tem->key);
+        free(tem);
     }else{
+       
         while (currentNode->next->key!=data)
         {
             currentNode=currentNode->next;
         }
-        pnode temp=currentNode->next;
-        currentNode->next=currentNode->next->next;
-        //printf("we free in delete_node_cmd the vertex: %d\n",temp->key);
+         pedge E=currentNode->next->edges;
+    while (E!=NULL)
+    {
+        pedge temp=E;
+        //printf("we free in delete_node_cmd the continue edge:{%d,%d}\n",currentNode->next->key,temp->dest);
+        E=E->next;
         free(temp);
+    }
+        pnode tem=currentNode->next;
+        currentNode->next=currentNode->next->next;
+        //printf("we free in delete_node_cmd the continue vertex: %d\n",tem->key);
+        free(tem);
     }
     currentNode=head;
     while (currentNode!=NULL)
@@ -474,7 +494,7 @@ void delete_node_cmd(){
         {
             if(currentE->dest==data){
                 pedge temp=currentNode->edges;
-               // printf("we free in delete_node_cmd th edge:{%d,%d}\n",currentNode->key,temp->dest);
+                //printf("we free in delete_node_cmd the wile in head edge:{%d,%d}\n",currentNode->key,temp->dest);
                 currentNode->edges=currentNode->edges->next;
                 free(temp);
             }else{
@@ -483,13 +503,14 @@ void delete_node_cmd(){
                    currentE=currentE->next;
                }
                pedge temp=currentE->next;
-               //printf("we free in delete_node_cmd th edge:{%d,%d}\n",currentNode->key,temp->dest);
+               //printf("we free in delete_node_cmd the while in continu edge:{%d,%d}\n",currentNode->key,temp->dest);
                currentE->next=currentE->next->next;
                free(temp);   
             }
         }
         currentNode=currentNode->next; 
     }
+    
 }
 void Printq(){
     pQe currentQ=Q;
