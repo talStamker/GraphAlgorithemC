@@ -21,15 +21,19 @@ int main(){
             //isA=1;
             //head=NULL;
             function=build_graph_cmd();
-            if(function=='\n')
+            if(function=='\n'){
+                deleteGraph_cmd();
                 break;
+            }
             //isprint=0;
             //printGraph_cmd();
             //printf("this is the function we get: %c",function);
         }else if(function=='B'){
                 function=insert_node_cmd();
-                if(function=='\n')
+                if(function=='\n'){
                     break;
+                    deleteGraph_cmd();
+                }
                 //isprint=0;
                 //printGraph_cmd();
                 //isA=1;
@@ -38,8 +42,10 @@ int main(){
                     //printGraph_cmd();
                     scanf("%c",&function);
                     //printf("function is: %c\n",function);
-                    if(function=='\n')
+                    if(function=='\n'){
+                    deleteGraph_cmd();
                         break;
+                    }
                     scanf("%c",&function);
                     //printf("function is: %c\n",function);
                     //isprint=0;
@@ -59,6 +65,7 @@ int main(){
                        // printf("function is: %c\n",function);
                         if(function=='\n'){
                             //printf("\n");
+                            deleteGraph_cmd();
                                 break;
                         }    
                         scanf("%c",&function);
@@ -73,6 +80,7 @@ int main(){
                             scanf("%c",&function);
                             //printf("function is: %c\n",function);
                             if(function=='\n'){
+                                deleteGraph_cmd();
                                 // printf("\n");
                                 break;
                             }
@@ -81,10 +89,10 @@ int main(){
                             //isprint=1;
                         }
                         //printf("function is: %c\n",function); 
-                        if(function!='A'&&function!='B'&&function!='S'&&function!='T'&&function!='D'){
-                            //printf("we sart free");
-                             deleteGraph_cmd();
-                        }
+                        // if(function!='A'&&function!='B'&&function!='S'&&function!='T'&&function!='D'){
+                        //     //printf("we sart free");
+                        //      deleteGraph_cmd();
+                        // }
                        // printf("function is: %c\n",function);      
         }
         return 0;

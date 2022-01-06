@@ -96,7 +96,7 @@ void delete(){
         pQe temp=currentQ->next;
         currentQ->next=currentQ->next->next;
         //printf("this is min key: %d",min->key); 
-        // printf("in delete we do free to Q: %d\n",temp->arr->key);
+        //printf("in delete we do free to Q: %d\n",temp->arr->key);
         free(temp);
     } 
     sizeQ--;
@@ -234,7 +234,7 @@ char insert_node_cmd()
             {
                 pedge temp=E;
                 //printf("{%d,%d}",currentN->next->key,E->dest);
-                //printf("we do free in insert_node_cmd for edge {%d,%d}\n",currentN->next->key,temp->dest);
+          //      printf("we do free in insert_node_cmd for edge {%d,%d}\n",currentN->next->key,temp->dest);
                 E=E->next;
                 free(temp);
             }  
@@ -311,7 +311,7 @@ char insert_node_cmd()
             currentE->next=(pedge)malloc(sizeof(edge));
             currentE->next->dest=(int)(dest)-48;
             currentE->next->w=(int)(w)-48;
-           // printf("we do malloc in insert_node_cmd for edge {%d,%d}\n",currentN->next->key,currentE->next->dest);
+            //printf("we do malloc in insert_node_cmd for edge {%d,%d}\n",currentN->next->key,currentE->next->dest);
             pnode v2=head;
             while (v2!=NULL)
             {
@@ -474,7 +474,7 @@ void delete_node_cmd(){
         {
             if(currentE->dest==data){
                 pedge temp=currentNode->edges;
-                //printf("we free in delete_node_cmd th edge:{%d,%d}\n",currentNode->key,temp->dest);
+               // printf("we free in delete_node_cmd th edge:{%d,%d}\n",currentNode->key,temp->dest);
                 currentNode->edges=currentNode->edges->next;
                 free(temp);
             }else{
