@@ -54,7 +54,7 @@ int main(){
                         {
                            // isA=0;
                             int tsp=TSP_cmd();
-                            printf("TSP shortest path: %d\n",tsp);
+                            printf("TSP shortest path: %d",tsp);
                             scanf("%c",&function);
                             scanf("%c",&function);
                             if(function=='A'||function=='B'||function=='S'||function=='T'||function=='D'){
