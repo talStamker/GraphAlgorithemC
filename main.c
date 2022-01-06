@@ -48,7 +48,7 @@ int main(){
                         scanf("%c",&function);
                         scanf("%c",&function);
                         if(function=='A'||function=='B'||function=='S'||function=='T'||function=='D'){
-                            printf("/n");
+                            printf("\n");
                         }
                     }else if (function=='T')
                         {
@@ -58,7 +58,7 @@ int main(){
                             scanf("%c",&function);
                             scanf("%c",&function);
                             if(function=='A'||function=='B'||function=='S'||function=='T'||function=='D'){
-                            printf("/n");
+                            printf("\n");
                             }
                             //isprint=1;
                         }
