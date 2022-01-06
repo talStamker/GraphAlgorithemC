@@ -21,11 +21,15 @@ int main(){
             //isA=1;
             //head=NULL;
             function=build_graph_cmd();
+            if(function=='\n')
+                break;
             //isprint=0;
             //printGraph_cmd();
             //printf("this is the function we get: %c",function);
         }else if(function=='B'){
                 function=insert_node_cmd();
+                if(function=='\n')
+                    break;
                 //isprint=0;
                 //printGraph_cmd();
                 //isA=1;
@@ -33,7 +37,11 @@ int main(){
                     delete_node_cmd();
                     //printGraph_cmd();
                     scanf("%c",&function);
+                    //printf("function is: %c\n",function);
+                    if(function=='\n')
+                        break;
                     scanf("%c",&function);
+                    //printf("function is: %c\n",function);
                     //isprint=0;
                    // isA=0;
                 }else if (function=='S')
@@ -41,20 +49,35 @@ int main(){
                        // isA=0;
                         int src,dest;
                         scanf("%d",&src);
+                       // printf("function is: %d\n",src);
                         scanf("%d",&dest);
+                        //printf("function is: %d\n",dest);
                         int shor=shortsPath_cmd(src,dest);
-                        printf("Dijsktra shortest path: %d\n",shor);
+                        printf("Dijsktra shortest path: %d \n",shor);
                         //isprint=1;
                         scanf("%c",&function);
+                       // printf("function is: %c\n",function);
+                        if(function=='\n'){
+                            //printf("\n");
+                                break;
+                        }    
                         scanf("%c",&function);
+                       // printf("function is: %c\n",function);
                         
                     }else if (function=='T')
                         {
                            // isA=0;
                             int tsp=TSP_cmd();
-                            printf("TSP shortest path: %d\n",tsp);
+                            printf("TSP shortest path: %d \n",tsp);
+
                             scanf("%c",&function);
+                            //printf("function is: %c\n",function);
+                            if(function=='\n'){
+                                // printf("\n");
+                                break;
+                            }
                             scanf("%c",&function);
+                            //printf("function is: %c\n",function);
                             //isprint=1;
                         }
                         //printf("function is: %c\n",function); 

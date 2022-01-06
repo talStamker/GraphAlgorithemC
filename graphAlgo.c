@@ -128,9 +128,12 @@ char build_graph_cmd()
     int n;
     char isN;
     scanf("%d", &n);
+    //printf("n is: %d\n",n);
     scanf("%c", &isN);
+    //printf("n is: %c\n",isN);
     //printf("this is n: %c\n",isN);
     scanf("%c", &isN);
+    //printf("n is: %c\n",isN);
     //printf("this is n: %c\n",isN);
     for (int  i = 0; i < n; i++)
     {
@@ -171,6 +174,7 @@ char insert_node_cmd()
     int id;
     pnode currentNode;
     scanf("%d", &id);
+    //printf("id is: %d\n",id);
     //printf("this is id: %d\n",id);
     pnode currentN;
     if(head==NULL){//beginning
@@ -236,19 +240,33 @@ char insert_node_cmd()
             }  
             currentN->next->edges=NULL;
              //printf("1\n");
-            char str[2];
-            scanf("%s", str);
-            if (str[1] == '\0')
-            {
-            return str[0];
+            char temp,w,dest;
+            scanf("%c",&temp);
+            //printf("this is temp:%c\n",temp);
+            scanf("%c",&dest);
+            //printf("this is dest:%c\n",dest);
+            if(dest<'0'||dest>'9'){
+                return dest;
             }
+            scanf("%c",&temp);
+            //printf("this is temp:%c\n",temp);
+            scanf("%c",&w);
+            //printf("this is w:%c\n",w);
+
+            // char str[2];
+            // scanf("%s", str);
+            // printf("str is: %s\n",str);
+            // if (str[1] == '\0')
+            // {
+            // return str[0];
+            // }
             //printf("2\n");
             currentN->next->edges=(pedge)malloc(sizeof(edge));
 
             //printf("3\n");
-            currentN->next->edges->dest=(int)(str[0])-48;
+            currentN->next->edges->dest=(int)(dest)-48;
             //printf("4\n");
-            currentN->next->edges->w=(int)(str[1])-48;
+            currentN->next->edges->w=(int)(w)-48;
             currentN->next->edges->next=NULL;
             //printf("5\n");
             // printf("we do malloc in insert_node_cmd for edge {%d,%d}\n",currentN->next->key,currentN->next->edges->dest);
@@ -269,16 +287,30 @@ char insert_node_cmd()
             while (1)
             {
             //printf("please enter edge\n");
-            char strin[2];
-            scanf("%s", strin);
-            if (strin[1] == '\0')
-            {
-            currentE->next=NULL;
-            return strin[0];
+            char temp,w,dest;
+            scanf("%c",&temp);
+            // printf("this is temp:%c\n",temp);
+            scanf("%c",&dest);
+            //printf("this is dest:%c\n",dest);
+            if(dest<'0'||dest>'9'){
+                currentE->next=NULL;
+                return dest;
             }
+            scanf("%c",&temp);
+             //printf("this is temp:%c\n",temp);
+            scanf("%c",&w);
+             //printf("this is w:%c\n",w);
+            // char strin[2];
+            // scanf("%s", strin);
+            //  printf("str is: %s\n",strin);
+            // if (strin[1] == '\0')
+            // {
+            // currentE->next=NULL;
+            // return strin[0];
+            // }
             currentE->next=(pedge)malloc(sizeof(edge));
-            currentE->next->dest=(int)(strin[0])-48;
-            currentE->next->w=(int)(strin[1])-48;
+            currentE->next->dest=(int)(dest)-48;
+            currentE->next->w=(int)(w)-48;
            // printf("we do malloc in insert_node_cmd for edge {%d,%d}\n",currentN->next->key,currentE->next->dest);
             pnode v2=head;
             while (v2!=NULL)
@@ -296,19 +328,33 @@ char insert_node_cmd()
     }
     //add edge:
     //printf("1\n");
-    char str[2];
-    scanf("%s", str);
-    if (str[1] == '\0')
-    {
+    char temp,w,dest;
+    scanf("%c",&temp);
+     //printf("this is temp:%c\n",temp);
+    scanf("%c",&dest);
+     //printf("this is dest:%c\n",dest);
+    if(dest<'0'||dest>'9'){
         currentNode->edges=NULL;
-        return str[0];
+        return dest;
     }
+    scanf("%c",&temp);
+    //printf("this is temp:%c\n",temp);
+    scanf("%c",&w);
+    //printf("this is w:%c\n",w);
+    // char str[2];
+    // scanf("%s", str);
+    //  printf("str is: %s\n",str);
+    // if (str[1] == '\0')
+    // {
+    //     currentNode->edges=NULL;
+    //     return str[0];
+    // }
     //printf("2\n");
     currentNode->edges=(pedge)malloc(sizeof(edge));
     //printf("3\n");
-    currentNode->edges->dest=(int)(str[0])-48;
+    currentNode->edges->dest=(int)(dest)-48;
     //printf("4\n");
-    currentNode->edges->w=(int)(str[1])-48;
+    currentNode->edges->w=(int)(w)-48;
     currentNode->edges->next=NULL;
     //printf("we do malloc in insert_node_cmd for edge {%d,%d}\n",currentNode->key,currentNode->edges->dest);
     //printf("5\n");
@@ -329,16 +375,30 @@ char insert_node_cmd()
     while (1)
     {
         //printf("please enter edge\n");
-        char strin[2];
-        scanf("%s", strin);
-        if (strin[1] == '\0')
-        {
-            currentE->next=NULL;
-            return strin[0];
-        }
+        char temp,w,dest;
+        scanf("%c",&temp);
+             //printf("this is temp:%c\n",temp);
+    scanf("%c",&dest);
+     //printf("this is dest:%c\n",dest);
+    if(dest<'0'||dest>'9'){
+        currentE->next=NULL;
+        return dest;
+    }
+    scanf("%c",&temp);
+     //printf("this is temp:%c\n",temp);
+    scanf("%c",&w);
+    //printf("this is w:%c\n",w);
+        // char strin[2];
+        // scanf("%s", strin);
+        //  printf("str is: %s\n",strin);
+        // if (strin[1] == '\0')
+        // {
+        //     currentE->next=NULL;
+        //     return strin[0];
+        // }
         currentE->next=(pedge)malloc(sizeof(edge));
-        currentE->next->dest=(int)(strin[0])-48;
-        currentE->next->w=(int)(strin[1])-48;
+        currentE->next->dest=(int)(dest)-48;
+        currentE->next->w=(int)(w)-48;
         //printf("we do malloc in insert_node_cmd for edge {%d,%d}\n",currentNode->key,currentE->next->dest);
         pnode v2=head;
         while (v2!=NULL)
@@ -385,6 +445,7 @@ int containsE(int data,pedge E){
 void delete_node_cmd(){
     int data;
     scanf("%d",&data);
+    //printf("data is: %d\n",data);
     if (containsN(data)==0)
     {
         return;
@@ -599,11 +660,13 @@ void TSP(int *c,int *A,int*sum,int *fsum,int flag,int n,int b,int a){
 int TSP_cmd(){
     int n;
     scanf("%d",&n);
+     //printf("n is: %d\n",n);
     int cities[n];
     for (int i = 0; i < n; i++)
     {
       int city;
       scanf("%d",&city);
+       //printf("city is: %d\n",city);
       cities[i]=city;  
     }
     //printf("we done with scan\n");
