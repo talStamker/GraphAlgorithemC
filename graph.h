@@ -27,7 +27,7 @@ char insert_node_cmd();
 void delete_node_cmd();
 void printGraph_cmd(); //for self debug
 void deleteGraph_cmd();
-int shortsPath_cmd(int src,int dest);
+int shortsPath_cmd( int src,int dest);
 int TSP_cmd();
 
 #endif

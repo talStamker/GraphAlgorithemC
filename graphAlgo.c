@@ -21,6 +21,7 @@ void insert(pnode n){
         min=n;
         Q->next=NULL;
         currentQ=Q;
+        //printf("in insert function we do malloc to Q; %d\n",Q->arr->key);
        // printf("add: %d\n",Q->arr->key);
     }else{//continue
         currentQ=Q;
@@ -30,6 +31,7 @@ void insert(pnode n){
         }
         currentQ->next=(pQe)malloc(sizeof(Qe));
         currentQ->next->arr=n;
+        //printf("in insert function we do malloc to Q; %d\n",currentQ->next->arr->key);
         currentQ->next->next=NULL;
        // printf("add: %d",currentQ->next->arr->key);
         if (n->d < min->d)
@@ -81,7 +83,9 @@ void delete(){
         //printf("4\n");
         //printf("5\n");
         Q=Q->next;
+        //printf("in delete we do free to Q: %d\n",temp->arr->key);
         free(temp);
+        
     }else{
         while (currentQ->next->arr->key!=min->key)
         {
@@ -92,6 +96,7 @@ void delete(){
         pQe temp=currentQ->next;
         currentQ->next=currentQ->next->next;
         //printf("this is min key: %d",min->key); 
+        // printf("in delete we do free to Q: %d\n",temp->arr->key);
         free(temp);
     } 
     sizeQ--;
@@ -134,16 +139,16 @@ char build_graph_cmd()
     }
     return isN;
 }
-node GET(int k){
-    pnode currentN=head;
-    while (currentN !=NULL&&currentN->key!=k)
-    {
-        currentN=currentN->next;
-    }
-    return *currentN;
+// node GET(int k){
+//     pnode currentN=head;
+//     while (currentN !=NULL&&currentN->key!=k)
+//     {
+//         currentN=currentN->next;
+//     }
+//     return *currentN;
     
 
-}
+// }
 // void updateDe(pnode n){
 //     pnode currentN=head;
 //     while (*currentN!=NULL)
@@ -172,6 +177,7 @@ char insert_node_cmd()
         head=(pnode)malloc(sizeof(node));
         head->key=id;
         head->next=NULL;
+        //printf("in insert_node_cmd we do malloc for vertex: %d",head->key);
         currentN=head;
         currentNode=head;
     }else{//continue
@@ -184,14 +190,17 @@ char insert_node_cmd()
         size++;
         currentN->next=(pnode)malloc(sizeof(node));
         currentN->next->key=id;
+        //printf("in insert_node_cmd we do malloc for vertex: %d",currentN->next->key);
         currentN->next->next=NULL;
         currentNode=currentN->next;
         //printf("this is not begining\n");
         pnode V=head;
+        pedge E=NULL;
+        currentN->next->edges=NULL;
             while (V!=NULL)
             {//update all dest
             //printf("we start match\n");
-                pedge E=V->edges;
+                 E=V->edges;
                 while (E!=NULL)
                 {
                     //printf("we start check\n");
@@ -221,6 +230,7 @@ char insert_node_cmd()
             {
                 pedge temp=E;
                 //printf("{%d,%d}",currentN->next->key,E->dest);
+                //printf("we do free in insert_node_cmd for edge {%d,%d}\n",currentN->next->key,temp->dest);
                 E=E->next;
                 free(temp);
             }  
@@ -234,11 +244,14 @@ char insert_node_cmd()
             }
             //printf("2\n");
             currentN->next->edges=(pedge)malloc(sizeof(edge));
+
             //printf("3\n");
             currentN->next->edges->dest=(int)(str[0])-48;
             //printf("4\n");
             currentN->next->edges->w=(int)(str[1])-48;
+            currentN->next->edges->next=NULL;
             //printf("5\n");
+            // printf("we do malloc in insert_node_cmd for edge {%d,%d}\n",currentN->next->key,currentN->next->edges->dest);
             pnode v1=head;
             while (v1!=NULL)
             {
@@ -266,6 +279,7 @@ char insert_node_cmd()
             currentE->next=(pedge)malloc(sizeof(edge));
             currentE->next->dest=(int)(strin[0])-48;
             currentE->next->w=(int)(strin[1])-48;
+           // printf("we do malloc in insert_node_cmd for edge {%d,%d}\n",currentN->next->key,currentE->next->dest);
             pnode v2=head;
             while (v2!=NULL)
             {
@@ -286,6 +300,7 @@ char insert_node_cmd()
     scanf("%s", str);
     if (str[1] == '\0')
     {
+        currentNode->edges=NULL;
         return str[0];
     }
     //printf("2\n");
@@ -294,6 +309,8 @@ char insert_node_cmd()
     currentNode->edges->dest=(int)(str[0])-48;
     //printf("4\n");
     currentNode->edges->w=(int)(str[1])-48;
+    currentNode->edges->next=NULL;
+    //printf("we do malloc in insert_node_cmd for edge {%d,%d}\n",currentNode->key,currentNode->edges->dest);
     //printf("5\n");
     pnode v1=head;
     while (v1!=NULL)
@@ -322,6 +339,7 @@ char insert_node_cmd()
         currentE->next=(pedge)malloc(sizeof(edge));
         currentE->next->dest=(int)(strin[0])-48;
         currentE->next->w=(int)(strin[1])-48;
+        //printf("we do malloc in insert_node_cmd for edge {%d,%d}\n",currentNode->key,currentE->next->dest);
         pnode v2=head;
         while (v2!=NULL)
         {
@@ -375,6 +393,7 @@ void delete_node_cmd(){
     if(currentNode->key==data){
         pnode temp=head;
         head=head->next;
+        //printf("we free in delete_node_cmd the vertex: %d\n",temp->key);
         free(temp);
     }else{
         while (currentNode->next->key!=data)
@@ -383,6 +402,7 @@ void delete_node_cmd(){
         }
         pnode temp=currentNode->next;
         currentNode->next=currentNode->next->next;
+        //printf("we free in delete_node_cmd the vertex: %d\n",temp->key);
         free(temp);
     }
     currentNode=head;
@@ -393,6 +413,7 @@ void delete_node_cmd(){
         {
             if(currentE->dest==data){
                 pedge temp=currentNode->edges;
+                //printf("we free in delete_node_cmd th edge:{%d,%d}\n",currentNode->key,temp->dest);
                 currentNode->edges=currentNode->edges->next;
                 free(temp);
             }else{
@@ -401,6 +422,7 @@ void delete_node_cmd(){
                    currentE=currentE->next;
                }
                pedge temp=currentE->next;
+               //printf("we free in delete_node_cmd th edge:{%d,%d}\n",currentNode->key,temp->dest);
                currentE->next=currentE->next->next;
                free(temp);   
             }
@@ -462,16 +484,19 @@ void printGraph_cmd(){
 }
 void deleteGraph_cmd(){
     pnode currentN=head;
+    pedge currentE=NULL;
     while (currentN!=NULL)
     {
-        pedge currentE=currentN->edges;
+        currentE=currentN->edges;
         while (currentE!=NULL)
         {
             pedge temp=currentE;
+            //printf("we free in deleteGraph_cmd the edge:{%d,%d}\n",currentN->key,temp->dest);
             currentE=currentE->next;
             free(temp);
         }
         pnode ptr=currentN;
+        //printf("we free the vertex:%d\n",ptr->key);
         currentN=currentN->next;
         free(ptr); 
     }
