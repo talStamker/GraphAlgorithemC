@@ -3,7 +3,7 @@
 - make
 - ./graph
 ## graph.h
-typedef struct edge_ {\n
+typedef struct edge_ { \n
     int w; //w
     pnode  de;//dest
     int dest;
