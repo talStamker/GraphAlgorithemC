@@ -3,7 +3,7 @@
 
 typedef struct GRAPH_NODE_*pnode;;
 
-typedef struct edge_ {
+! typedef struct edge_ {
     int w; //w
     pnode  de;//dest
     int dest;
