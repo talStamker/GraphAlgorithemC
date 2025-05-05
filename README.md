@@ -1,4 +1,6 @@
 # GraphAlgorithemC
-## How to run?
-### make than ./graph(linux)
-### 
+## How to run it?
+ make
+./graph
+## graphAlgo.c:
+
