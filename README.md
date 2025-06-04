@@ -1,4 +1,4 @@
-# GraphAlgorithemC
+# GraphAlgorithmsC
 ## How to run it?
 ### make
 ### ./graph
